@@ -1,0 +1,175 @@
+<!-- new navbar  -->
+<div class="container-fluid">
+    <div class="row bg-secondary py-2 px-xl-5">
+        <div class="col-lg-6 d-none d-lg-block">
+            <div class="d-inline-flex align-items-center">
+                <a class="text-dark" href="">FAQs</a>
+                <span class="text-muted px-2">|</span>
+                <a class="text-dark" href="">Help</a>
+                <span class="text-muted px-2">|</span>
+                <a class="text-dark" href="">Support</a>
+            </div>
+        </div>
+        <div class="col-lg-6 text-center text-lg-right">
+            <div class="d-inline-flex align-items-center">
+                <a class="text-dark px-2">
+                    <i class="fa fa-facebook-f"></i>
+                </a>
+                <a class="text-dark px-2">
+                    <i class="fa fa-twitter"></i>
+                </a>
+                <a class="text-dark px-2">
+                    <i class="fa fa-linkedin"></i>
+                </a>
+                <a class="text-dark px-2">
+                    <i class="fa fa-instagram"></i>
+                </a>
+                <a class="text-dark pl-2">
+                    <i class="fa fa-youtube"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="row align-items-center py-4 px-xl-5 headeritm">
+        <div class="col-lg-3 d-none d-lg-block">
+            <a href="" class="text-decoration-none">
+                <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">E</span>Shopper</h1>
+            </a>
+        </div>
+        <div class="col-lg-5 text-left">
+            <form action="">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for products">
+                    <div class="input-group-append">
+                        <span class="input-group-text bg-white text-primary">
+                            <i class="fa fa-search"></i>
+                        </span>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- Example single danger button -->
+       
+        <div class="col-lg-4 col-6 text-right">
+
+            <a *ngIf="userName" class="nav-item  usrnme">Welcome, {{ userName.charAt(0).toUpperCase() +
+                userName.slice(1) }}!</a>
+
+           
+            <a class="btn border bg-white ">
+                <i class="fa fa-heart text-primary"></i>
+                <span class="wishlist">0</span>
+            </a>
+            <a [routerLink]="['/cart']" class="btn border bg-white ">
+                <i class="fa fa-shopping-cart text-primary"></i>
+                <span class="shpcrt">{{ cartItemCount }}</span>
+            </a>
+
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Account
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a [routerLink]="['/']" class="nav-item nav-link active">Home</a></li>
+                    <li> <a [routerLink]="['/contactus']" class="nav-item nav-link">Contact</a></li>
+                    <li><a class="nav-item nav-link" data-bs-toggle="modal" data-bs-target="#exampleModal">Login</a>
+                    </li>
+                    <li><a class="nav-item nav-link" data-bs-toggle="modal" data-bs-target="#signup">Register</a></li>
+                    <li><a (click)="logout()" class="nav-item nav-link">Logout</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Sign In</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="show-msg" style="background-color: none;" [innerHTML]="target"></div>
+                <div class="bg-light rounded p-4 p-sm-5 my-4 mx-3">
+                    <form [formGroup]="loginForm">
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" id="floatingInput" formControlName="email"
+                                placeholder="name@example.com">
+
+                        </div>
+                        <div class="form-floating mb-4">
+                            <input type="password" class="form-control" formControlName="password" id="floatingPassword"
+                                placeholder="Password">
+
+                        </div>
+                    </form>
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                        </div>
+                        <a>Forgot Password</a>
+                    </div>
+                    <button type="submit" #signInButton class="btn btn-primary py-3 w-100 mb-4"
+                        (click)="loginUser()">Sign In</button>
+                    <p class="text-center mb-0">Don't have an Account? <a href="#" data-bs-toggle="modal" data-bs-target="#signup" data-bs-dismiss="modal">Sign Up</a></p>
+                    <!-- <p class="text-center mb-0">Go to Dashboard<a [routerLink]="['/user']">Click</a></p> -->
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="signup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Sign Up</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="show-msg" style="background-color: none;" [innerHTML]="target"></div>
+                <div class="bg-light rounded p-4 p-sm-5 my-4 mx-3">
+                    <form [formGroup]="signup">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingText" formControlName="userName"
+                                placeholder="jhondoe">
+
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" id="floatingInput1" formControlName="email"
+                                placeholder="name@example.com">
+
+                        </div>
+                        <div class="form-floating mb-4">
+                            <input type="password" class="form-control" formControlName="password"
+                                id="floatingPassword1" placeholder="Password">
+
+                        </div>
+                    </form>
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                        </div>
+                        <a href="">Forgot Password</a>
+                    </div>
+                    <button type="button" class="btn btn-primary py-3 w-100 mb-4"
+                        (click)="signupfun()">Register Now</button>
+                    <p class="text-center mb-0">Already have an Account? <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-dismiss="modal">Sign In</a>
+                    </p>
+                    <!-- <p class="text-center mb-0">Go to Dashboard<a [routerLink]="['/user']">Click</a></p> -->
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>

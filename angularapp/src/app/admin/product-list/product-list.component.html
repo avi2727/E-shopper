@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+  <div class="container-xxl position-relative bg-white d-flex p-0">
+
+
+
+
+    <!-- Sidebar Start -->
+    <div class="sidebar pe-4 pb-3">
+      <nav class="navbar bg-light navbar-light">
+        <a href="index.html" class="navbar-brand mx-4 mb-3">
+          <h3 class="text-primary">Admin Pannel</h3>
+        </a>
+        <div class="d-flex align-items-center ms-4 mb-4">
+          <div class="position-relative">
+            <img class="rounded-circle" src="assets/img/user.jpg" alt="" style="width: 40px; height: 40px;">
+            <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
+            </div>
+          </div>
+          <div class="ms-3">
+            <!-- <h6 class="mb-0">{{ adminName }}</h6> -->
+
+            <span>Admin</span>
+          </div>
+        </div>
+        <div class="navbar-nav w-100">
+          <a [routerLink]="['/admin/adminHomePage']" class="nav-item nav-link"><i
+              class="fa fa-table me-2"></i>Userlist</a>
+          <a [routerLink]="['/admin/product-list']" class="nav-item nav-link"><i
+              class="fa fa-table me-2"></i>Products</a>
+          <a [routerLink]="['/admin/category-list']" class="nav-item nav-link"><i
+              class="fa fa-table me-2"></i>Category</a>
+          <a [routerLink]="['/admin/subcategory-list']" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Sub
+            Category</a>
+
+        </div>
+      </nav>
+    </div>
+    <!-- Sidebar End -->
+
+
+    <!-- Content Start -->
+    <div class="content">
+      <!-- Navbar Start -->
+      <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
+        <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
+          <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
+        </a>
+        <a href="#" class="sidebar-toggler flex-shrink-0">
+          <i class="fa fa-bars"></i>
+        </a>
+        <form class="d-none d-md-flex ms-4">
+          <input class="form-control border-0" type="search" placeholder="Search">
+        </form>
+        <div class="navbar-nav align-items-center ms-auto">
+          <div class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+              <i class="fa fa-envelope me-lg-2"></i>
+              <span class="d-none d-lg-inline-flex">Message</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+              <a href="#" class="dropdown-item">
+                <div class="d-flex align-items-center">
+                  <img class="rounded-circle" src="assets/img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                  <div class="ms-2">
+                    <h6 class="fw-normal mb-0">Jhon send you a message</h6>
+                    <small>15 minutes ago</small>
+                  </div>
+                </div>
+              </a>
+              <hr class="dropdown-divider">
+              <a href="#" class="dropdown-item">
+                <div class="d-flex align-items-center">
+                  <img class="rounded-circle" src="assets/img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                  <div class="ms-2">
+                    <h6 class="fw-normal mb-0">Jhon send you a message</h6>
+                    <small>15 minutes ago</small>
+                  </div>
+                </div>
+              </a>
+              <hr class="dropdown-divider">
+              <a href="#" class="dropdown-item">
+                <div class="d-flex align-items-center">
+                  <img class="rounded-circle" src="assets/img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                  <div class="ms-2">
+                    <h6 class="fw-normal mb-0">Jhon send you a message</h6>
+                    <small>15 minutes ago</small>
+                  </div>
+                </div>
+              </a>
+              <hr class="dropdown-divider">
+              <a href="#" class="dropdown-item text-center">See all message</a>
+            </div>
+          </div>
+          <div class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+              <i class="fa fa-bell me-lg-2"></i>
+              <span class="d-none d-lg-inline-flex">Notification</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+              <a href="#" class="dropdown-item">
+                <h6 class="fw-normal mb-0">Profile updated</h6>
+                <small>15 minutes ago</small>
+              </a>
+              <hr class="dropdown-divider">
+              <a href="#" class="dropdown-item">
+                <h6 class="fw-normal mb-0">New user added</h6>
+                <small>15 minutes ago</small>
+              </a>
+              <hr class="dropdown-divider">
+              <a href="#" class="dropdown-item">
+                <h6 class="fw-normal mb-0">Password changed</h6>
+                <small>15 minutes ago</small>
+              </a>
+              <hr class="dropdown-divider">
+              <a href="#" class="dropdown-item text-center">See all notifications</a>
+            </div>
+          </div>
+          <div class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+              <img class="rounded-circle me-lg-2" src="assets/img/user.jpg" alt="" style="width: 40px; height: 40px;">
+              <!-- <span class="d-none d-lg-inline-flex">{{ adminName }}</span> -->
+
+            </a>
+            <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+              <a href="#" class="dropdown-item">My Profile</a>
+              <a href="#" class="dropdown-item">Settings</a>
+              <!-- <a href="#" (click)="onLogout()" class="dropdown-item">Log Out</a> -->
+            </div>
+          </div>
+        </div>
+      </nav>
+
+
+      <div class="container-fluid pt-4 px-4">
+        <div class="bg-light text-center rounded p-4">
+          <div class="d-flex align-items-center justify-content-between mb-4">
+            <h6 class="mb-0">Product Details</h6>
+
+            <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#addmodal">Add
+              Product</button>
+          </div>
+          <!-- <mat-form-field>
+            <mat-label>Filter</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+          </mat-form-field> -->
+          <div class="mb-3 mt-3 searchbox">
+            <label for="name" class="form-label">Search Filter:</label>
+            <input type="text" class="form-control " formControlName="name" required>
+           </div>
+          
+          <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource" matSort class="table text-start align-middle  table-hover mb-0">
+              <!-- Image Column -->
+              <ng-container matColumnDef="image">
+                <th mat-header-cell *matHeaderCellDef> Image </th>
+                <td mat-cell *matCellDef="let row">
+                  <img [src]="'http://127.0.0.1/laravel-angular/public/' + row.product_image" alt="" width="50" height="50">
+                </td>
+              </ng-container>
+          
+              <!-- Product Name Column -->
+              <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Product Name </th>
+                <td mat-cell *matCellDef="let row">{{ row.name }}</td>
+              </ng-container>
+          
+              <!-- Product Color Column -->
+              <ng-container matColumnDef="color">
+                <th mat-header-cell *matHeaderCellDef> Product Color </th>
+                <td mat-cell *matCellDef="let row">{{ row.color }}</td>
+              </ng-container>
+          
+              <!-- Product Price Column -->
+              <ng-container matColumnDef="price">
+                <th mat-header-cell *matHeaderCellDef> Product Price </th>
+                <td mat-cell *matCellDef="let row">{{ row.price }}</td>
+              </ng-container>
+          
+              <!-- Product Availability Column -->
+              <ng-container matColumnDef="availability">
+                <th mat-header-cell *matHeaderCellDef> Product Available </th>
+                <td mat-cell *matCellDef="let row">{{ row.availability === 1 ? 'YES' : 'NO' }}</td>
+              </ng-container>
+          
+              <!-- Action Column -->
+              <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef> Action </th>
+                <td mat-cell *matCellDef="let row">
+                  <button type="button" class="btn btn-sm  editbtn" data-bs-toggle="modal" (click)="populateFormWithData(row)" data-bs-target="#exampleModal">
+                    <mat-icon>edit</mat-icon>
+                  </button>
+                  <!-- <button mat-button color="primary" class="editbtn" data-bs-toggle="modal" (click)="populateFormWithData(row)"><mat-icon>edit</mat-icon></button> -->
+                  <!-- <button mat-button color="accent" (click)="deletedata(row.id)"><mat-icon>delete</mat-icon></button> -->
+
+
+                  <button class="btn btn-sm deletebtn" (click)="deletedata(row.id)">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </td>
+              </ng-container>
+          
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+          
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="10" [pageIndex]="0"></mat-paginator>
+          </div>
+          
+          
+          
+          <!-- <div class="table-responsive">
+            <table class="table text-start align-middle table-bordered table-hover mb-0">
+              <thead>
+                <tr class="text-dark">
+                 
+                  <th scope="col">Image</th>
+                  <th scope="col">Product Name</th>
+                  <th scope="col">Product Color</th>
+                  <th scope="col">Product Price</th>
+                  <th scope="col">Product Available</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+
+                <tr *ngFor="let st of productData">
+                  <td><img [src]="'http://127.0.0.1/larang/laravel-angular/public/'+ st.product_image" alt="" width="50"
+                      height="50"></td>
+                  <td>{{st.name}}</td>
+                  <td>{{st.color}}</td>
+                  <td>{{st.price}}</td>
+               
+                  <td *ngIf="st.availability === 1">YES</td>
+                  <td *ngIf="st.availability === 2">NO</td>
+                  <td>
+
+                    <button type="button" class="btn btn-sm btn-primary editbtn" data-bs-toggle="modal"
+                      (click)="populateFormWithData(st)" data-bs-target="#exampleModal">
+                      <i class="fa fa-edit"></i>
+                    </button>
+
+                    <button class="btn btn-sm btn-danger" (click)="deletedata(st.id)">
+                      <i class="fa fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div> -->
+        </div>
+      </div>
+
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Update Product Details</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form [formGroup]="producteditForm">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="mb-3 mt-3">
+                      <label for="name" class="form-label">Product Name:</label>
+                      <input type="text" class="form-control" formControlName="name" required>
+
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="description" class="form-label">Description:</label>
+                      <textarea class="form-control" formControlName="description"
+                        placeholder="Enter Description"></textarea>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="price" class="form-label">Price:</label>
+                      <input type="number" class="form-control" formControlName="price" step="0.01"
+                        placeholder="Enter Price" required>
+
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="availability" class="form-label">Availability:</label>
+                      <select class="form-control" formControlName="availability" required>
+                        <option value="1">yes</option>
+                        <option value="2">no</option>
+                      </select>
+
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="trandy" class="form-label">Trandy Product:</label>
+                      <select class="form-control" formControlName="trandy" required>
+                        <option value="1">yes</option>
+                        <option value="2">no</option>
+                      </select>
+
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="justArrived" class="form-label">New Arrival:</label>
+                      <select class="form-control" formControlName="justArrived" required>
+                        <option value="1">yes</option>
+                        <option value="2">no</option>
+                      </select>
+
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Size:</label>
+                      <label>
+                        <input type="radio" formControlName="size" value="Small">
+                        Small
+                      </label>
+                      <label>
+                        <input type="radio" formControlName="size" value="Medium">
+                        Medium
+                      </label>
+                      <label>
+                        <input type="radio" formControlName="size" value="Large">
+                        Large
+                      </label>
+                      <label>
+                        <input type="radio" formControlName="size" value="Extra Large">
+                        Extra Large
+                      </label>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Color:</label>
+                      <label>
+                        <input type="radio" formControlName="color" value="red">
+                        Red
+                      </label>
+                      <label>
+                        <input type="radio" formControlName="color" value="black">
+                        Black
+                      </label>
+                      <label>
+                        <input type="radio" formControlName="color" value="white">
+                        White
+                      </label>
+                      <label>
+                        <input type="radio" formControlName="color" value="blue">
+                       Blue
+                      </label>
+                      <label>
+                        <input type="radio" formControlName="color" value="green">
+                        Green
+                      </label>
+                    </div>
+                    <!-- <div class="mb-3">
+                      <label for="color" class="form-label">Color:</label>
+                      <input type="text" class="form-control" formControlName="color" required>
+
+                    </div> -->
+                    <div class="mb-3">
+                      <label for="information" class="form-label">Product Information:</label>
+                      <textarea type="text" class="form-control" formControlName="information" required></textarea>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="category_id" class="form-label">Category:</label>
+                      <select class="form-control" formControlName="category_id" required>
+                        <option value="" disabled selected>Select Category</option>
+                        <option value="1">Shirts</option>
+                        <option value="2">Jeans</option>
+                        <option value="3">Swimwear</option>
+                        <option value="4">Sleepwear</option>
+                        <option value="5">Sportswear</option>
+                        <option value="6">Jumpsuits</option>
+                        <option value="7">Blazers</option>
+                        <option value="8">Jackets</option>
+                        <option value="9">Shoes</option>
+                      </select>
+
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="supcategory_id" class="form-label">Super category:</label>
+                      <select class="form-control" formControlName="supcategory_id" required>
+                        <option value="1">Men's Dresses</option>
+                        <option value="2">Women's Dresses</option>
+                        <option value="3">Baby's Dresses</option>
+                      </select>
+
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="location" class="form-label">Location:</label>
+                      <input type="text" class="form-control" formControlName="location">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="image" class="form-label">Image:</label>
+
+                      <img [src]="imagePreview_show"
+                        style="width: 50px; height: 50px; margin-bottom: 8px; margin-left: 7px;"
+                        *ngIf="imagePreview_show">
+                      <input type="file" (change)="handleImageChange_new($event)" class="form-control" name="image"
+                        accept="image/*" required>
+                    </div>
+                  </div>
+                </div>
+
+              </form>
+              <div class="savechangebtn">
+                <button type="button" class="btn btn-sm btn-primary" data-bs-dismiss="modal"
+                  (click)="saveModifyData()">Save
+                  changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- *********************************************ADD PRODUCT**************************************************************** -->
+      <div class="modal fade" id="addmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Add Product Information</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form #productForm="ngForm" (ngSubmit)="addproduct()">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="mb-3 mt-3">
+                      <label for="name" class="form-label">Product Name:</label>
+                      <input type="text" #productName="ngModel" [(ngModel)]="productObj.name" class="form-control"
+                        placeholder="Enter Name" name="name" required>
+                      <span *ngIf="productForm.invalid && productForm.touched && !productForm.submitted"
+                        style="color:red;">Please Enter
+                        a valid Name</span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="description" class="form-label">Description:</label>
+                      <textarea class="form-control" #productDesc="ngModel" [(ngModel)]="productObj.description"
+                        placeholder="Enter Description" name="description"></textarea>
+                      <span *ngIf="productForm.invalid && productForm.touched && !productForm.submitted"
+                        style="color:red;">Please Enter
+                        a valid description</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="price" class="form-label">Price:</label>
+                      <input type="number" class="form-control" #productPrice="ngModel" [(ngModel)]="productObj.price"
+                        step="0.01" placeholder="Enter Price" name="price" required>
+                      <span *ngIf="productForm.invalid && productForm.touched && !productForm.submitted"
+                        style="color:red;">Please Enter
+                        a valid Price</span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="availability" class="form-label">Availability:</label>
+                      <select class="form-control" #productSupcat="ngModel" [(ngModel)]="productObj.availability"
+                        name="availability">
+                        <option value="" disabled selected>Select Availability</option>
+                        <option value="1">YES</option>
+                        <option value="2">NO</option>
+                      </select>
+                      <span *ngIf="productForm.invalid && productForm.touched && !productForm.submitted"
+                        style="color:red;">Please Enter
+                        a valid Availability</span>
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="trandy" class="form-label">Trandy Product:</label>
+                      <select class="form-control" #productSupcat="ngModel" [(ngModel)]="productObj.trandy"
+                        name="trandy">
+                        <option value="" disabled selected>Select Trandy Product</option>
+                        <!-- Add dynamic options here if needed -->
+                        <option value="1">YES</option>
+                        <option value="2">NO</option>
+                        <!-- Add more options as needed -->
+                      </select>
+                      <span *ngIf="productForm.invalid && productForm.touched && !productForm.submitted"
+                        style="color:red;">Please Enter
+                        a valid Trandy Product</span>
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="justArrived" class="form-label">New Arrival:</label>
+                      <select class="form-control" #productSupcat="ngModel" [(ngModel)]="productObj.justArrived"
+                        name="justArrived">
+                        <option value="" disabled selected>Select Super category</option>
+                        <option value="1">YES</option>
+                        <option value="2">NO</option>
+                      </select>
+                      <span *ngIf="productForm.invalid && productForm.touched && !productForm.submitted"
+                        style="color:red;">Please Enter
+                        a valid Supcategory</span>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Size:</label>
+                      <label>
+                        <input type="radio" [(ngModel)]="productObj.size" name="size" value="Small">
+                        Small
+                      </label>
+                      <label>
+                        <input type="radio" [(ngModel)]="productObj.size" name="size" value="Medium">
+                        Medium
+                      </label>
+                      <label>
+                        <input type="radio" [(ngModel)]="productObj.size" name="size" value="Large">
+                        Large
+                      </label>
+                      <label>
+                        <input type="radio" [(ngModel)]="productObj.size" name="size" value="Extra Large">
+                        Extra Large
+                      </label>
+                      <span *ngIf="productForm.invalid && productForm.touched && !productForm.submitted"
+                        style="color:red;">Please Select Size</span>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Color:</label>
+                      <label>
+                        <input type="radio" [(ngModel)]="productObj.color" name="color" value="red">
+                        Red
+                      </label>
+                      <label>
+                        <input type="radio" [(ngModel)]="productObj.color" name="color" value="black">
+                        Black
+                      </label>
+                      <label>
+                        <input type="radio" [(ngModel)]="productObj.color" name="color" value="blue">
+                        Blue
+                      </label>
+                      <label>
+                        <input type="radio" [(ngModel)]="productObj.color" name="color" value="white">
+                       White
+                      </label>
+                      <label>
+                        <input type="radio" [(ngModel)]="productObj.color" name="color" value="green">
+                        Green
+                      </label>
+                      <span *ngIf="productForm.invalid && productForm.touched && !productForm.submitted"
+                        style="color:red;">Please Select Color</span>
+                    </div>
+                    <!-- <div class="mb-3">
+                      <label for="color" class="form-label">Color:</label>
+                      <input type="text" #productColor="ngModel" class="form-control" [(ngModel)]="productObj.color"
+                        name="color" required>
+                      <span *ngIf="productForm.invalid && productForm.touched && !productForm.submitted"
+                        style="color:red;">Please Enter
+                        Color</span>
+                    </div> -->
+                    <div class="mb-3">
+                      <label for="color" class="form-label">Product Information</label>
+                      <textarea type="text" #productInfo="ngModel" class="form-control"
+                        [(ngModel)]="productObj.information" name="information" required></textarea>
+                      <span *ngIf="productForm.invalid && productForm.touched && !productForm.submitted"
+                        style="color:red;">Please Enter
+                        Product Information
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="category_id" class="form-label">Category:</label>
+                      <select class="form-control" #productCategory="ngModel" [(ngModel)]="productObj.category_id"
+                        placeholder="Category" name="category_id" required>
+                        <option value="" disabled selected>Select Category</option>
+                        <option value="1">Shirts</option>
+                        <option value="2">Jeans</option>
+                        <option value="3">Swimwear</option>
+                        <option value="4">Sleepwear</option>
+                        <option value="5">Sportswear</option>
+                        <option value="6">Jumpsuits</option>
+                        <option value="7">Blazers</option>
+                        <option value="8">Jackets</option>
+                        <option value="9">Shoes</option>
+                      </select>
+                      <span *ngIf="productForm.invalid && productForm.touched && !productForm.submitted"
+                        style="color:red;">Please Enter
+                        a valid category</span>
+                    </div>
+                  </div>
+                  <!-- <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="subcategory_id" class="form-label">Subcategory:</label>
+                                <select class="form-control"  #productSubcategory="ngModel"  [(ngModel)]="productObj.subcategory_id" name="subcategory_id">
+                                    <option value="" disabled selected>Select Subcategory</option>
+                                    
+                                    <option value="1">Subcategory 1</option>
+                                    <option value="2">Subcategory 2</option>
+                                
+                                </select>
+                                <span *ngIf="productForm.invalid && productForm.touched && !productForm.submitted" style="color:red;">Please Enter
+                                    a valid subcategory</span>
+                            </div>
+                        </div> -->
+                </div>
+                <div class="row">
+
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="location" class="form-label">Location:</label>
+                      <input type="text" class="form-control" #productLoc="ngModel" [(ngModel)]="productObj.location"
+                        placeholder="Enter Location" name="location">
+                      <span *ngIf="productForm.invalid && productForm.touched && !productForm.submitted"
+                        style="color:red;">Please Enter
+                        a valid location</span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="supcategory_id" class="form-label">Super category:</label>
+                      <select class="form-control" #productSupcat="ngModel" [(ngModel)]="productObj.supcategory_id"
+                        name="supcategory_id">
+                        <option value="" disabled selected>Select Super category</option>
+                        <!-- Add dynamic options here if needed -->
+                        <option value="1">Men's Dresses</option>
+                        <option value="2">Women's Dresses</option>
+                        <option value="3">Baby's Dresses</option>
+                        <!-- Add more options as needed -->
+                      </select>
+                      <span *ngIf="productForm.invalid && productForm.touched && !productForm.submitted"
+                        style="color:red;">Please Enter
+                        a valid Supcategory</span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="image" class="form-label">Image:</label>
+                      <img [src]="imagePreview" style="width: 50px; height: 50px; margin-bottom: 8px; margin-left:7px"
+                        alt="..." *ngIf="imagePreview">
+                      <input type="file" #productImage (change)="handleImageChange($event)" class="form-control"
+                        name="image" accept="image/*" required>
+                      <span *ngIf="productForm.invalid && productForm.touched && !productForm.submitted"
+                        style="color:red;">Please Enter
+                        a valid Image</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mb-3 submit-btn">
+                  <button type="submit" class="btn btn-sm btn-primary" data-bs-dismiss="modal">Save Product</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Start -->
+      <div class="container-fluid pt-4 px-4">
+        <div class="bg-light rounded-top p-4">
+          <div class="row">
+            <div class="col-12 col-sm-6 text-center text-sm-start">
+              &copy; <a href="#">Avinash Kr Shukla</a>, All Right Reserved.
+            </div>
+            <div class="col-12 col-sm-6 text-center text-sm-end">
+              <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+              Designed By <a href="https://htmlcodex.com">HTML Codex</a>
+
+              Distributed By <a class="border-bottom" href="https://themewagon.com" target="_blank">ThemeWagon</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Footer End -->
+    </div>
+    <!-- Content End -->
+    <!-- Back to Top -->
+
+  </div>
+  <!-- modal start -->
+
+
+
+
+</body>
+
+</html>
