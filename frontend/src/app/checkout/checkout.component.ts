@@ -38,7 +38,7 @@ ngOnInit() {
     this.name = userData.userName;
     this.email = userData.userEmail;
     this.userid= userData.userID;
-    this.userdataService.getcartdetails(userId).subscribe((res: any) => {
+    this.userdataService.getCartDetails(userId).subscribe((res: any) => {
       const cartData = res.cart_items || [];
       const cart_item_count = res.cart_item_count;
       cartData.forEach((item: any) => {
@@ -61,6 +61,13 @@ ngOnInit() {
   }
 
   onSubmitcheckoutForm() {
+    // Validate required fields
+    if (!this.name || !this.email || !this.contact || !this.address1 || !this.city || !this.state || !this.zip || !this.payment) {
+      this.target = '<div class="alert alert-danger">Please fill in all required fields marked with * and select a payment method.</div>';
+      setTimeout(() => { this.target = ''; }, 3000);
+      return;
+    }
+
     // Calculate the sum of all product_subtotal values
     let totalProductSubtotals = 0;
     this.cartData.forEach(product => {
@@ -85,7 +92,7 @@ ngOnInit() {
       payment: this.payment,
       userid: this.userid
     };
-    this.userdataService.updatecheckoutdata(formData).subscribe((res:any)=>{ 
+    this.userdataService.checkout(formData).subscribe((res:any)=>{ 
      // console.log(res);
       if(res.code==1){
         this.target ='<div class="alert alert-success"> Success!'+res.message+'</div>';

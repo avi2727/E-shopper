@@ -48,7 +48,7 @@ export class AuthService {
       );
     }
     signupfun(credentials: { email: string, password: string, userName:string }): Observable<{success: boolean, message?: string}> {
-      return this.userdataService.SignupUser(credentials).pipe(
+      return this.userdataService.signupUser(credentials).pipe(
         map((res: any) => {
           if (res.code === 1) {
             sessionStorage.setItem('userData', JSON.stringify(res));

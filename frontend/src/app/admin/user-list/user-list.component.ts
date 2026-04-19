@@ -62,11 +62,11 @@ export class UserListComponent {
       email: studentData.email,
       contact: studentData.contact
     });
-    this.imagePreview_show = 'http://127.0.0.1/laravel-angular/public/' + studentData.user_image;
+    this.imagePreview_show = 'http://127.0.0.1/eshopper/backend/public/' + studentData.user_image;
   }
 
 showApiData(){
-  this.userdataService.getUserDataApi().subscribe((res:any)=>{
+  this.userdataService.getUsers().subscribe((res:any)=>{
     this.studentData=res;
   })
 }
@@ -83,7 +83,7 @@ addstudent() {
   if (this.selectedImage) {
     formData.append('image', this.selectedImage, this.selectedImage.name);
   }
-  this.userdataService.addstudentdata(formData).subscribe((res :any) => {
+  this.userdataService.addUser(formData).subscribe((res :any) => {
     this.showApiData();
     this.userobj.name='';
     this.userobj.email='';
@@ -103,7 +103,7 @@ addstudent() {
   deletedata(id:any){
     var c= confirm('Are you sure want to delete?')
     if(c){
-      this.userdataService.deletedata(id).subscribe((res :any) =>{
+      this.userdataService.deleteUser(id).subscribe((res :any) =>{
         this.showApiData();
         if(res.code==1){
           this.target ='<div class="alert alert-success"> Success!'+res.message+'</div>';
@@ -150,7 +150,7 @@ addstudent() {
     if (this.selectedFile) {
       formDataToSend.append('image', this.selectedFile, this.selectedFile.name);
     }  
-    this.userdataService.updatedata(formDataToSend,user_id).subscribe((res:any)=>{
+    this.userdataService.updateUser(user_id, formDataToSend).subscribe((res:any)=>{
       this.showApiData();
       if(res.code==1){
         this.target ='<div class="alert alert-success"> Success!'+res.message+'</div>';

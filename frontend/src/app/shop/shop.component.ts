@@ -38,14 +38,14 @@ export class ShopComponent implements OnInit {
     const priceFilter = (document.querySelector('input[name="price"]:checked') as HTMLInputElement).value;
     const colorFilter = (document.querySelector('input[name="color"]:checked') as HTMLInputElement).value;
     const sizeFilter = (document.querySelector('input[name="size"]:checked') as HTMLInputElement).value;
-    this.userdataService.filterby(priceFilter, colorFilter, sizeFilter,this.category, this.subcategory).subscribe((res: any) => {
-    this.filterData = res.original;
-    if(res.original.code==1){
-            this.target ='<div class="alert alert-danger">'+res.original.message+'</div>';
-          }
-          setTimeout(() => {
-            this.target = '';
-          }, 5000);
+    this.userdataService.filterProducts(priceFilter, colorFilter, sizeFilter,this.category, this.subcategory).subscribe((res: any) => {
+    this.filterData = res;
+    if (this.filterData.length === 0) {
+      this.target = '<div class="alert alert-danger">No products found matching your filters.</div>';
+    }
+    setTimeout(() => {
+      this.target = '';
+    }, 5000);
           this.showCategoryData = !(this.filterData && this.filterData.length > 0);
     });
 
@@ -66,7 +66,7 @@ addToCart(productId: any) {
     userId: userId
   };
 
-  this.userdataService.addtocart(cartItem).subscribe((res: any) => {
+  this.userdataService.addToCart(cartItem).subscribe((res: any) => {
     if (res.code == 1) {
       this.target = '<div class="alert alert-success"> Success!' + res.message + '</div>';
 

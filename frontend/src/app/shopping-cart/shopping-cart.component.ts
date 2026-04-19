@@ -39,7 +39,7 @@ export class ShoppingCartComponent {
       });
   
       if (userId) {
-        this.userdataService.getcartdetails(userId).subscribe((res: any) => {
+        this.userdataService.getCartDetails(userId).subscribe((res: any) => {
           const cartDataFromDB = res.cart_items || [];
           const cart_item_count_db = res.cart_item_count;
   
@@ -57,7 +57,7 @@ export class ShoppingCartComponent {
       }
     } else if (userId) {
       // Display only cart data from the database
-      this.userdataService.getcartdetails(userId).subscribe((res: any) => {
+      this.userdataService.getCartDetails(userId).subscribe((res: any) => {
         const cartData = res.cart_items || [];
         const cart_item_count = res.cart_item_count;
   
@@ -124,7 +124,7 @@ export class ShoppingCartComponent {
             cart_id: item.cart_id
           };
         });
-        this.userdataService.insertCartData(userId, cartDataForBackend).subscribe(
+        this.userdataService.syncCartAfterLogin(userId, cartDataForBackend).subscribe(
           (response) => {
             console.log('Previous cart data inserted:', response);
             sessionStorage.removeItem('sessionCartItem');

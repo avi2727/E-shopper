@@ -43,7 +43,7 @@
             <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                   <div class="carousel-item active">
-                    <img class="detail-img" *ngIf="productData" [src]="'http://127.0.0.1/laravel-angular/public/'+ productData[0].product_image" alt="Image">
+                    <img class="detail-img" *ngIf="productData" [src]="productData[0].product_image.startsWith('http') ? productData[0].product_image : 'http://127.0.0.1/eshopper/backend/public/'+ productData[0].product_image" alt="Image">
                   </div>
                 </div>
                 <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">

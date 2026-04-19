@@ -1,131 +1,143 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import { Observable, catchError } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable, BehaviorSubject, catchError, map, of } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
-import { BehaviorSubject } from 'rxjs';
-
+import { Product, CartItem } from '../models/product.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserdataService {
-   userdata:any;
-   getApi = environment.apiUrl;
-   private userNameSubject = new BehaviorSubject<string | null>("guest");
+  private apiUrl = environment.apiUrl;
+  
+  private userNameSubject = new BehaviorSubject<string | null>("guest");
   userName$ = this.userNameSubject.asObservable();
-  constructor(private http:HttpClient) { }
+
+  constructor(private http: HttpClient) { }
+
   setUserName(userName: string | null) {
     this.userNameSubject.next(userName);
   }
-  autoSignInWithToken(token: any): Observable<any> {
-    return this.http.get(this.getApi+'autosignin/'+ token);
-  }
-  getUserDataApi(): Observable<any> {
-     return this.http.get(this.getApi+'student');
 
-  }
-  addstudentdata(data:any){
-    return this.http.post(this.getApi+'addstudent',data);
-  }
-  deletedata(id:any){
-    return this.http.delete(this.getApi+'deletestudent/'+id);
-  }
-  editdata(id:any){
-    return this.http.get(this.getApi+'editstudent/'+id);
-    
-  }
-  updatedata(data: FormData, id: any){
-    return this.http.post(this.getApi+'updatestudent/'+id, data);
-  }
-  loginUser(data: any){
-    return this.http.post(this.getApi+'login', data);
+  // --- Auth & User ---
+  autoSignInWithToken(token: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}autosignin/${token}`);
   }
 
-  logoutUser() {
-    return this.http.post(this.getApi + 'logout',{});
+  loginUser(data: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}login`, data);
   }
-  // isLoggedin() : boolean{
-  //   return !!localStorage.getItem('token');
-  // }
-  SignupUser(data:any) {
-    return this.http.post(this.getApi+'signup', data);
+
+  logoutUser(): Observable<any> {
+    return this.http.post(`${this.apiUrl}logout`, {});
   }
-  addproductdata(data:any){
-    return this.http.post(this.getApi+'addproduct',data);
+
+  signupUser(data: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}signup`, data);
   }
-  getProductDataApi(): Observable<any> {
-    return this.http.get(this.getApi+'product');
- }
- getTrandyProductData(): Observable<any> {
-  return this.http.get(this.getApi+'trendy-product');
-}
-getJustArrivedProductData(): Observable<any> {
-  return this.http.get(this.getApi+'just-arrived-product');
-}
- deleteproductdata(id:any){
-  return this.http.delete(this.getApi+'deleteproduct/'+id);
-}
-updateproductdata(data: FormData, id: any){
-  return this.http.post(this.getApi+'updateproduct/'+id, data);
-}
-getproductdetails(id: any){
-  return this.http.get(this.getApi+'fetch-product-details/'+id);
-}
-categoryWiseData(category: any){
-  return this.http.get(this.getApi+'fetch-product-categorywise/'+category);
-}
-getProductCount(): Observable<any> {
-    return this.http.get(this.getApi+'product-count');
- }
- filterby(priceFilter: any, colorFilter: any, sizeFilter: any, category:any,subcategory:any) {
 
-  const requestBody = [
-    { key: 'priceFilter', value: priceFilter },
-    { key: 'colorFilter', value: colorFilter },
-    { key: 'sizeFilter', value: sizeFilter },
-    { key: 'category_id', category },
-    { key: 'subcategory', subcategory },
-  ];
+  // --- User List Management ---
+  getUsers(): Observable<any> {
+    return this.http.get(`${this.apiUrl}users`);
+  }
 
-  return this.http.post(this.getApi + 'fetch-product-filter-wise/', requestBody);
-}
-addtocart(cartItem: { quantity: number; productId: any; }){
-  return this.http.post(this.getApi+'add-to-cart/',cartItem);
-}
-// getcartdetails(userId:any){
-//   return this.http.get(this.getApi+'fetch-cart-details/'+ userId);
-// }
-getcartdetails(userId: any) {
-  return this.http.get(this.getApi + 'fetch-cart-details/' + userId).pipe(
-    catchError((error: any) => {
-      console.error("Error fetching cart details:", error);
-      return [];
-    })
-  );
-}
+  addUser(data: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}users`, data);
+  }
 
-updateCartItem(item:any){
-   return this.http.post(this.getApi+'update-cart-details/',item);
-}
-insertCartData(userId: any, cartDataForBackend: any) {
-  const requestData = {
-    userId: userId,
-    cartData: cartDataForBackend
-  };
+  deleteUser(id: any): Observable<any> {
+    return this.http.delete(`${this.apiUrl}users/${id}`);
+  }
 
-  return this.http.post(this.getApi + 'insert-cart-details/', requestData);
-}
-removeCartItem(cart_id:any,user_id:any){
-  const requestData = {
-    cart_id: cart_id,
-    user_id: user_id
-  };
-  return this.http.post(this.getApi + 'remove-cart-details/', requestData);
-}
-updatecheckoutdata(formDataToSend: any) {
-  return this.http.post(this.getApi + 'checkoutItems-details/', { formDataToSend });
-}
-// getcartdetailsforSession(data: any) {
-//   return this.http.post(this.getApi + 'get-Product-details/', { cartItems: data });
-// }
+  updateUser(id: any, data: FormData): Observable<any> {
+    return this.http.post(`${this.apiUrl}users/${id}`, data);
+  }
+
+  // --- Product Management ---
+  getProductData(): Observable<Product[]> {
+    return this.http.get<any>(`${this.apiUrl}product`).pipe(
+      map(res => res.data || res) // Handle both raw array and Resource collection wrapper
+    );
+  }
+
+  getTrendyProducts(): Observable<Product[]> {
+    return this.http.get<any>(`${this.apiUrl}trendy-product`).pipe(
+      map(res => res.data || res)
+    );
+  }
+
+  getJustArrivedProducts(): Observable<Product[]> {
+    return this.http.get<any>(`${this.apiUrl}just-arrived-product`).pipe(
+      map(res => res.data || res)
+    );
+  }
+
+  getProductDetails(id: number): Observable<Product[]> {
+    return this.http.get<Product[]>(`${this.apiUrl}fetch-product-details/${id}`);
+  }
+
+  addProduct(data: FormData): Observable<any> {
+    return this.http.post(`${this.apiUrl}addproduct`, data);
+  }
+
+  updateProduct(id: number, data: FormData): Observable<any> {
+    return this.http.post(`${this.apiUrl}updateproduct/${id}`, data);
+  }
+
+  deleteProduct(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}deleteproduct/${id}`);
+  }
+
+  getCategoryProducts(category: number): Observable<Product[]> {
+    return this.http.get<any>(`${this.apiUrl}fetch-product-categorywise/${category}`).pipe(
+      map(res => res.data || res)
+    );
+  }
+
+  getProductCount(): Observable<any> {
+    return this.http.get(`${this.apiUrl}product-count`);
+  }
+
+  filterProducts(priceFilter: string, colorFilter: string, sizeFilter: string, category: any, subcategory: any): Observable<Product[]> {
+    const filters = [
+      { key: 'priceFilter', value: priceFilter },
+      { key: 'colorFilter', value: colorFilter },
+      { key: 'sizeFilter', value: sizeFilter },
+      { key: 'category_id', category },
+      { key: 'subcategory', subcategory },
+    ];
+    return this.http.post<any>(`${this.apiUrl}fetch-product-filter-wise/`, filters).pipe(
+      map(res => res.data || res)
+    );
+  }
+
+  // --- Cart Management ---
+  addToCart(cartItem: { quantity: number; productId: number; userId?: string | number | null }): Observable<any> {
+    return this.http.post(`${this.apiUrl}add-to-cart/`, cartItem);
+  }
+
+  getCartDetails(userId: string | number | null): Observable<{ cart_items: CartItem[], cart_item_count: number }> {
+    return this.http.get<any>(`${this.apiUrl}fetch-cart-details/${userId}`).pipe(
+      catchError((error) => {
+        console.error("Error fetching cart details:", error);
+        return of({ cart_items: [], cart_item_count: 0 });
+      })
+    );
+  }
+
+  updateCartItem(item: { cart_id: number; quantity: number }): Observable<any> {
+    return this.http.post(`${this.apiUrl}update-cart-details/`, item);
+  }
+
+  syncCartAfterLogin(userId: number, cartData: any[]): Observable<any> {
+    return this.http.post(`${this.apiUrl}insert-cart-details/`, { userId, cartData });
+  }
+
+  removeCartItem(cart_id: number, user_id: number | null): Observable<any> {
+    return this.http.post(`${this.apiUrl}remove-cart-details/`, { cart_id, user_id });
+  }
+
+  checkout(formDataToSend: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}checkoutItems-details/`, { formDataToSend });
+  }
 }

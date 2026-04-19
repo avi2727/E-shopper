@@ -16,7 +16,7 @@ class DirectoryImageSeeder extends Seeder
      */
     public function run()
     {
-        $baseDir = 'c:/xampp/htdocs';
+        $baseDir = __DIR__ . '/../../public';
         $foldersToScan = ['WOMEN', 'jeansbaby', 'jenaswomen', 'shirtbaby'];
 
         // Ensure Supercategory 1 exists to satisfy constraints (as used in previous seeder)

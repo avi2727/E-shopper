@@ -23,12 +23,12 @@ export class HomepageComponent {
   this.getproductcount();
 }
 getTrendyProduct(){
-  this.userdataService.getTrandyProductData().subscribe((res:any)=>{
+  this.userdataService.getTrendyProducts().subscribe((res:any)=>{
     this.trendyData=res;
   });
 }
   getJustArrivalProduct(){
-    this.userdataService.getJustArrivedProductData().subscribe((res:any)=>{
+    this.userdataService.getJustArrivedProducts().subscribe((res:any)=>{
       this.justArrivedData=res;
     });
   

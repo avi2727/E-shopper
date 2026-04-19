@@ -60,7 +60,7 @@ export class ProductListComponent {
   }
 
   showApiData(){
-    this.userdataService.getProductDataApi().subscribe((res:any)=>{
+    this.userdataService.getProductData().subscribe((res:any)=>{
       this.dataSource = new MatTableDataSource(res);
       this.dataSource.paginator=this.paginator;
     })
@@ -97,7 +97,7 @@ export class ProductListComponent {
       formData.append('image', this.selectedImage, this.selectedImage.name);
     }
    
-    this.userdataService.addproductdata(formData).subscribe((res :any) => {
+    this.userdataService.addProduct(formData).subscribe((res :any) => {
        this.showApiData();
       this.productObj.name='';
       this.productObj.description='';
@@ -140,12 +140,12 @@ export class ProductListComponent {
         trandy:productData.trandy,
         justArrived:productData.justArrived,
       });
-      this.imagePreview_show = 'http://127.0.0.1/laravel-angular/public/' + productData.product_image;
+      this.imagePreview_show = productData.product_image.startsWith('http') ? productData.product_image : 'http://127.0.0.1/eshopper/backend/public/' + productData.product_image;
     }
     deletedata(id:any){
       var c= confirm('Are you sure want to delete?')
       if(c){
-        this.userdataService.deleteproductdata(id).subscribe((res :any) =>{
+        this.userdataService.deleteProduct(id).subscribe((res :any) =>{
           this.showApiData();
           if(res.code==1){
             this.target ='<div class="alert alert-success"> Success!'+res.message+'</div>';
@@ -210,7 +210,7 @@ export class ProductListComponent {
       if (this.selectedFile) {
         formDataToSend.append('image', this.selectedFile, this.selectedFile.name);
       }  
-      this.userdataService.updateproductdata(formDataToSend,user_id).subscribe((res:any)=>{ 
+      this.userdataService.updateProduct(user_id as any, formDataToSend).subscribe((res:any)=>{ 
         this.showApiData();
         if(res.code==1){
           this.target ='<div class="alert alert-success"> Success!'+res.message+'</div>';

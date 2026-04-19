@@ -15,7 +15,7 @@ export class DetailTabPanelComponent {
     this.activeTab = tabId;
   }
   ngOnInit() {
-    this.userdataService.getproductdetails(this.id).subscribe((res:any)=>{
+    this.userdataService.getProductDetails(this.id as any).subscribe((res:any)=>{
       this.productData=res;
    })
   }

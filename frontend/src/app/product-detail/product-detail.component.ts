@@ -35,7 +35,7 @@ export class ProductDetailComponent implements OnInit {
   }
 
   product_detail(id: any) {
-    this.userdataService.getproductdetails(id).subscribe((res: any) => {
+    this.userdataService.getProductDetails(id).subscribe((res: any) => {
       this.productData = res;
     });
   }
@@ -82,7 +82,7 @@ export class ProductDetailComponent implements OnInit {
   }
 
   addCartItemToBackend(cartItem: any) {
-    this.userdataService.addtocart(cartItem).subscribe((res: any) => {
+    this.userdataService.addToCart(cartItem).subscribe((res: any) => {
       if (res.code == 1) {
         this.handleCartAdditionSuccess(res.message);
       } else if (res.code == 2) {

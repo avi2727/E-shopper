@@ -18,19 +18,19 @@
                 <h4 class="font-weight-semi-bold mb-4">Billing Address</h4>
                 <div class="row">
                     <div class="col-md-6 form-group">
-                        <label>Name</label>
+                        <label>Name <span class="text-danger">*</span></label>
                         <input class="form-control" name="name"  [(ngModel)]="name" type="text" placeholder="John">
                     </div>
                     <div class="col-md-6 form-group">
-                        <label>E-mail</label>
+                        <label>E-mail <span class="text-danger">*</span></label>
                         <input class="form-control" name="email"  [(ngModel)]="email" type="text" placeholder="example@email.com">
                     </div>
                     <div class="col-md-6 form-group">
-                        <label>Mobile No</label>
+                        <label>Mobile No <span class="text-danger">*</span></label>
                         <input class="form-control" name="contact" [(ngModel)]="contact" type="text" placeholder="+123 456 789">
                     </div>
                     <div class="col-md-6 form-group">
-                        <label>Address Line 1</label>
+                        <label>Address Line 1 <span class="text-danger">*</span></label>
                         <input class="form-control" name="address1" [(ngModel)]="address1" type="text" placeholder="123 Street">
                     </div>
                     <div class="col-md-6 form-group">
@@ -38,7 +38,7 @@
                         <input class="form-control" name="address2" [(ngModel)]="address2" type="text" placeholder="123 Street">
                     </div>
                     <div class="col-md-6 form-group">
-                        <label>Country</label>
+                        <label>Country <span class="text-danger">*</span></label>
                         <select class="custom-select" name="country" [(ngModel)]="country">
                             <option selected>United States</option>
                             <option>Afghanistan</option>
@@ -47,15 +47,15 @@
                         </select>
                     </div>
                     <div class="col-md-6 form-group">
-                        <label>City</label>
+                        <label>City <span class="text-danger">*</span></label>
                         <input class="form-control" name="city" [(ngModel)]="city" type="text" placeholder="New York">
                     </div>
                     <div class="col-md-6 form-group">
-                        <label>State</label>
+                        <label>State <span class="text-danger">*</span></label>
                         <input class="form-control" name="state" [(ngModel)]="state" type="text" placeholder="New York">
                     </div>
                     <div class="col-md-6 form-group">
-                        <label>ZIP Code</label>
+                        <label>ZIP Code <span class="text-danger">*</span></label>
                         <input class="form-control" name="zip" [(ngModel)]="zip" type="text" placeholder="123">
                     </div>
                     <!-- <div class="col-md-12 form-group">

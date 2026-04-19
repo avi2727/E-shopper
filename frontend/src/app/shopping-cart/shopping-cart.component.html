@@ -27,7 +27,7 @@
                 </thead>
                 <tbody class="align-middle">
                     <tr *ngFor="let st of cartData; let index = index;">
-                        <td class="align-middle"><img [src]="'http://127.0.0.1/laravel-angular/public/'+ st.product_image"
+                        <td class="align-middle"><img [src]="st.product_image.startsWith('http') ? st.product_image : 'http://127.0.0.1/eshopper/backend/public/'+ st.product_image"
                                 alt="" style="width: 50px;"></td>
                         <td class="align-middle">${{ st.name }}</td>
                         <td class="align-middle">${{ st.price }}</td>

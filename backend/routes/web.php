@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\HTTP\Controllers\UsersController;
 use App\HTTP\Controllers\LoginController;
 use App\HTTP\Controllers\ProductController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,12 +20,10 @@ use App\HTTP\Controllers\ProductController;
 Route::get('/', function () {
     return view('welcome');
 });
- Route::get('user',[UsersController::class,'show']);
- Route::get('student',[UsersController::class,'getdata']);
- Route::post('addstudent',[UsersController::class,'adddata']);
- Route::delete('deletestudent/{id}',[UsersController::class,'deletedata']);
-//  Route::get('editstudent/{id}',[UsersController::class,'editdata']);
- Route::post('updatestudent/{id}',[UsersController::class,'updatedata']);
+ Route::get('users', [UserController::class, 'index']);
+ Route::post('users', [UserController::class, 'store']);
+ Route::delete('users/{id}', [UserController::class, 'destroy']);
+ Route::post('users/{id}', [UserController::class, 'update']);
 //  login route 
 Route::group(['middleware' => ['web']], function () {
     Route::post('login',[LoginController::class,'login']);
